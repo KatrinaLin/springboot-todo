@@ -16,7 +16,7 @@ public class ToDoController {
     }
 
     @PostMapping("/todos")
-    public ArrayList<Item> addToDo(@RequestParam String value, @RequestParam boolean checked) {
+    public Item addToDo(@RequestBody Item item) {
         int size = this.toDoList.size();
         int id;
         if (size == 0) {
@@ -24,23 +24,21 @@ public class ToDoController {
         } else {
             id = this.toDoList.get(size - 1).getId() + 1;
         }
-        this.toDoList.add(new Item(id, value, checked));
-        return this.toDoList;
+        item.setId(id);
+        this.toDoList.add(item);
+        return item;
     }
 
-
     @DeleteMapping("/todos/{id:\\d+}")
-    public String deleteToDo(@PathVariable("id") int id) {
+    public void deleteToDo(@PathVariable("id") int id) {
         Item target = this.toDoList.stream().filter(item -> item.getId() == id).findFirst().get();
         this.toDoList.remove(target);
-        return "Success!";
     }
 
     @PutMapping("/todos/{id:\\d+}")
-    public String updateToDo(@PathVariable("id") int id, @RequestParam String newValue) {
-        Item target = this.toDoList.stream().filter(item -> item.getId() == id).findFirst().get();
-        target.setValue(newValue);
-        return "Success!";
+    public void updateToDo(@PathVariable("id") int id, @RequestBody Item item) {
+        Item target = this.toDoList.stream().filter(i -> i.getId() == id).findFirst().get();
+        target.setValue(item.getValue());
     }
 
 }

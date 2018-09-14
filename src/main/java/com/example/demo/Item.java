@@ -11,6 +11,10 @@ public class Item {
         this.checked = checked;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
