@@ -29,4 +29,11 @@ public class ToDoController {
         return "Success!";
     }
 
+    @PutMapping("/todos")
+    public String updateToDo(@RequestParam int id, @RequestParam String newValue){
+        Item target = this.toDoList.stream().filter(item -> item.getId() == id).findFirst().get();
+        target.setValue(newValue);
+        return "Success!";
+    }
+
 }
