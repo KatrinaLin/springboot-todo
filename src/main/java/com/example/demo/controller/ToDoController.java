@@ -20,4 +20,13 @@ public class ToDoController {
         this.toDoList.add(new Item(id, value, checked));
         return "Success!";
     }
+
+
+    @DeleteMapping("/todos")
+    public String deleteToDo(@RequestParam int id) {
+        Item target = this.toDoList.stream().filter(item -> item.getId() == id).findFirst().get();
+        this.toDoList.remove(target);
+        return "Success!";
+    }
+
 }
