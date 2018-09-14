@@ -5,6 +5,12 @@ public class Item {
     private String value = "item";
     private boolean checked = false;
 
+    public Item(int id, String value, boolean checked) {
+        this.id = id;
+        this.value = value;
+        this.checked = checked;
+    }
+
     public int getId() {
         return id;
     }
@@ -15,5 +21,9 @@ public class Item {
 
     public boolean isChecked() {
         return checked;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }
