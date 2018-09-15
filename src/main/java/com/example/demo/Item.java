@@ -23,11 +23,15 @@ public class Item {
         return value;
     }
 
-    public boolean isChecked() {
+    public boolean getChecked() {
         return checked;
     }
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 }

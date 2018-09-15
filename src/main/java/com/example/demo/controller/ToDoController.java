@@ -39,6 +39,7 @@ public class ToDoController {
     public void updateToDo(@PathVariable("id") int id, @RequestBody Item item) {
         Item target = this.toDoList.stream().filter(i -> i.getId() == id).findFirst().get();
         target.setValue(item.getValue());
+        target.setChecked(item.getChecked());
     }
 
 }
